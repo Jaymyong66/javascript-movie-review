@@ -9,7 +9,7 @@ describe('Fixture를 이용한 인기순 영화 목록 테스트', () => {
       { fixture: 'movie-popular.json' },
     ).as('getPopularMovies');
 
-    cy.visit('http://localhost:8080');
+    cy.customVisit();
   });
 
   it('영화 목록 API를 호출하면 한 번에 20개씩 목록에 나열되어야 한다', () => {
@@ -19,7 +19,7 @@ describe('Fixture를 이용한 인기순 영화 목록 테스트', () => {
       expect(popularMovies.length).to.equal(20);
 
       // fixture data로 렌더링 검증
-      cy.get('.item-list > li').should('have.length', 20);
+      cy.get('.item-card').should('have.length', 20);
     });
   });
 });
